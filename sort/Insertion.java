@@ -10,13 +10,27 @@ import java.util.Arrays;
  */
 public class Insertion
 {
-  
   /**
    * Returns the sorted array
    */
   public static int[] sort(int[] arr) {
-    // Your algorithm goes here!
-
+    int l = arr.length;
+    for (int i=1 ; i<l; i++) {
+        int key = arr[i];
+        int j = i-1;
+        //j = position in array (i) - 1, then while the position before i (j) 
+        //is larger than the position (i), 
+        while (j>=0 && arr[j]>key) {
+            arr[j+1] = arr[j];
+            j=j-1;
+        }
+        arr[j+1]=key;
+    }
+    for (int i = 0; i < l; i++) {
+        System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+    return arr;
   }
   
   public static void main(String[] args) {
