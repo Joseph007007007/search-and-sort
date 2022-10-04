@@ -15,9 +15,29 @@ public class Selection
    * Returns the sorted array
    */
   public static int[] sort(int[] arr) {
-    // Your algorithm goes here!
+    int pos;
+    int temp;
+    for (int i = 0; i < arr.length; i++) 
+    { 
+        pos = i; 
+        for (int j = i+1; j < arr.length; j++) 
+        {
+                if (arr[j] < arr[pos])                  
+                {
+                    pos = j;
+                }
+        }
 
-  }
+        temp = arr[pos];            
+        arr[pos] = arr[i]; 
+        arr[i] = temp; 
+    } 
+    for (int i=0; i<arr.length; i++) 
+        {
+            System.out.print(arr[i]+" ");
+        } 
+    return arr;
+    }
   
   public static void main(String[] args) {
     int[] arr = {53,85,93,25,39,27,42,5,24,45,33,51,5,80,4,7,91,
