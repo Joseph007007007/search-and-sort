@@ -13,11 +13,21 @@ public class Binary
    * Returns the index of the target value, or -1 if not found
    */
   public static int search(int[] arr, int target) {
-    // Your algorithm goes here!
-    // Note... I know that the standard Java Arrays class has a method called
-    // binarySearch.  If you use it for testing, but you need to implement the algorithm
-    // to get the point!
-    
+    int low = 0;
+    int high = arr.length-1;
+    while (low <= high) {
+        int mid = (low+high)/2;
+        if (target == arr[mid]) {
+            return mid;
+        } else {
+            if (target < arr[mid]) {
+                high = mid-1;
+            } else {
+                low = mid + 1;
+            }
+        }
+    }
+    return -1;
   }
   
   public static void main(String[] args) {
@@ -27,7 +37,22 @@ public class Binary
       
     // Remember that a binary search requires a sorted array!
     // You can use one of your sorting methods here.
-    
+    int l = arr.length;
+    for (int i=1 ; i<l; i++) {
+        int key = arr[i];
+        int j = i-1;
+        //j = position in array (i) - 1, then while the position before i (j) 
+        //is larger than the position (i), 
+        while (j>=0 && arr[j]>key) {
+            arr[j+1] = arr[j];
+            j=j-1;
+        }
+        arr[j+1]=key;
+    }
+    for (int i = 0; i < l; i++) {
+        System.out.print(arr[i] + " ");
+        System.out.println();
+    }
 
     ////////////////////////////////////////////////////////////
     // Do not change anything below this line!!
